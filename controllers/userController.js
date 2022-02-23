@@ -20,7 +20,8 @@ module.exports = {
     },
 
     updateUser(res,res) {
-
+        User.findOneAndUpdate({ _id: req.params.userId }, { $set: req.body}, {new: true})
+            .then((user) => !user ? res.json({ message: 'No user with that ID'}) : res.json(user))
     },
 
     deleteUser(res,res) {
