@@ -2,7 +2,7 @@ const {Thought, User} = require('../models')
 
 module.exports = {
 
-    getThoughts(res,res) {
+    getThoughts(req,res) {
 
     },
 
@@ -10,23 +10,23 @@ module.exports = {
 
     },
 
-    createThought(res,res) {
+    createThought(req,res) {
 
     },
 
-    updateThought(res,res) {
+    updateThought(req,res) {
 
     },
 
-    deleteThought(res,res) {
+    deleteThought(req,res) {
 
     },
 
-    createReaction(res,res) {
+    createReaction(req,res) {
 
     },
 
-    deleteReaction(res,res) {
+    deleteReaction(req,res) {
 
     },
 }
