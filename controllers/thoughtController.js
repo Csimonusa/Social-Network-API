@@ -33,11 +33,19 @@ module.exports = {
 
     deleteThought(req,res) {
         Thought.findOneAndDelete({ _id: req.params.thoughtId })
-            .then((thought) => !thought ? res.json({ message: 'No thought with that ID '}) : res.json(thought))
+            .then((thought) => !thought ? res.json({ message: 'No thought with that ID '}) : User.findOneAndUpdate(
+                { username: thought.username },
+                { $pull: { thoughts: thought._id }},
+                { new: true })
+            )
     },
 
     createReaction(req,res) {
-
+        Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            { $addToSet: { reactions: req.body }},
+            { new: true })
+            .then((thought) => !thought ? res.json({ message: 'No thought with that ID '}) : res.json(thought))
     },
 
     deleteReaction(req,res) {
