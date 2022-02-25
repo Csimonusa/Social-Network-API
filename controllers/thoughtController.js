@@ -32,7 +32,8 @@ module.exports = {
     },
 
     deleteThought(req,res) {
-
+        Thought.findOneAndDelete({ _id: req.params.thoughtId })
+            .then((thought) => !thought ? res.json({ message: 'No thought with that ID '}) : res.json(thought))
     },
 
     createReaction(req,res) {
